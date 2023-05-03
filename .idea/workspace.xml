@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e171daa-05ef-4b32-a67e-9ae9a548aa53" name="Changes" comment="" />
+    <list default="true" id="6e171daa-05ef-4b32-a67e-9ae9a548aa53" name="Changes" comment="feat: jekyll theme 첫 세팅">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017/01/01/my-example-post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/01/my-example-post/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017/01/02/my-german-post/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/02/my-german-post/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017/01/03/super-long-article/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/03/super-long-article/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017/01/04/this-post-demonstrates-post-content-styles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/04/this-post-demonstrates-post-content-styles/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/2017/01/05/welcome-to-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/05/welcome-to-jekyll/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/archives/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories/junk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories/junk/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories/misc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories/misc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/_site/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags/ipsum/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/ipsum/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags/lorem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/lorem/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="main" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -19,12 +47,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1683028945" />
+                    <option name="branchName" value="post" />
+                    <option name="lastUsedInstant" value="1683030114" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1683028944" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1683030020" />
                   </RecentBranch>
                 </list>
               </option>
@@ -63,6 +91,7 @@
       <updated>1683025735937</updated>
       <workItem from="1683025737061" duration="1731000" />
       <workItem from="1683028962840" duration="465000" />
+      <workItem from="1683072443441" duration="13000" />
     </task>
     <servers />
   </component>

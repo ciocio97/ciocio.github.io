@@ -13,18 +13,18 @@
   <meta name="description" content="Web Developer, ciocio&#39;s Blog.">
   
 
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="stylesheet" href="/blog/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/about/">
   
   
-  <link rel="alternate" type="application/rss+xml" title="🦄 Hello De-signer!" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="🦄 Hello De-signer" href="http://localhost:4000/blog/feed.xml">
 
   
 
   
   <meta property="og:title" content="About">
-  <meta property="og:site_name" content="🦄 Hello De-signer!">
-  <meta property="og:url" content="http://localhost:4000/about/">
+  <meta property="og:site_name" content="🦄 Hello De-signer">
+  <meta property="og:url" content="http://localhost:4000/blog/about/">
   <meta property="og:description" content="Web Developer, ciocio&#39;s Blog.">
   
   
@@ -50,15 +50,15 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/">🦄 Hello De-signer!</a>
+    <a class="site-title" href="/blog/">🦄 Hello De-signer</a>
 
     <nav class="site-nav">
       
         
-        <a class="page-link" href="/about/">About</a>
+        <a class="page-link" href="/blog/about/">About</a>
       
         
-        <a class="page-link" href="/archives/">Archives</a>
+        <a class="page-link" href="/blog/archives/">Archives</a>
       
         
         <a class="page-link" href="https://github.com/yous/whiteglass">GitHub</a>
@@ -218,12 +218,12 @@ contents to footer, create an <code class="language-plaintext highlighter-rouge"
 
 <p>For example, you can add favicons to <code class="language-plaintext highlighter-rouge">_includes/head_custom.html</code>:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/x-icon"</span> <span class="na">href=</span><span class="s">"/favicon.ico"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/apple-touch-icon.png"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"76x76"</span> <span class="na">href=</span><span class="s">"/apple-touch-icon-76x76.png"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"120x120"</span> <span class="na">href=</span><span class="s">"/apple-touch-icon-120x120.png"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"152x152"</span> <span class="na">href=</span><span class="s">"/apple-touch-icon-152x152.png"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"180x180"</span> <span class="na">href=</span><span class="s">"/apple-touch-icon-180x180.png"</span><span class="nt">&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"icon"</span> <span class="na">type=</span><span class="s">"image/x-icon"</span> <span class="na">href=</span><span class="s">"/blog/favicon.ico"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">href=</span><span class="s">"/blog/apple-touch-icon.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"76x76"</span> <span class="na">href=</span><span class="s">"/blog/apple-touch-icon-76x76.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"120x120"</span> <span class="na">href=</span><span class="s">"/blog/apple-touch-icon-120x120.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"152x152"</span> <span class="na">href=</span><span class="s">"/blog/apple-touch-icon-152x152.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"apple-touch-icon"</span> <span class="na">sizes=</span><span class="s">"180x180"</span> <span class="na">href=</span><span class="s">"/blog/apple-touch-icon-180x180.png"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
 <p>The site’s default CSS is in the gem itself,
@@ -439,6 +439,13 @@ used in meta descriptions for improving SEO.</p>
   </div>
 
   
+    <div class="post-comments">
+      <hr />
+<h1>댓글</h1>
+<p>Insert your custom comment provider like <a href="https://disqus.com">Disqus</a> or <a href="https://posativ.org/isso">Isso</a> here.</p>
+
+    </div>
+  
 
 </article>
 
@@ -452,7 +459,7 @@ used in meta descriptions for improving SEO.</p>
     <p>
       
 
-&copy; ciocio - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="http://localhost:4000/feed.xml">RSS</a>
+&copy; ciocio - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="http://localhost:4000/blog/feed.xml">RSS</a>
 
     </p>
 

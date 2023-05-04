@@ -48,6 +48,7 @@ plugins:
 # Build settings
 markdown: kramdown
 excerpt_separator: "<!-- more -->"
+theme: jekyll-whiteglass
 
 # Outputting
 permalink: /:year/:month/:day/:title/

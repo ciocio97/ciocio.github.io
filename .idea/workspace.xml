@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e171daa-05ef-4b32-a67e-9ae9a548aa53" name="Changes" comment="feat: title test">
-      <change afterPath="$PROJECT_DIR$/_posts/2023-05-03-test-content.md" afterDir="false" />
+    <list default="true" id="6e171daa-05ef-4b32-a67e-9ae9a548aa53" name="Changes" comment="feat: github 링크 url을 수정하다">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_data/navigation.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_data/navigation.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2017/01/03/super-long-article/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/03/super-long-article/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/2017/01/04/this-post-demonstrates-post-content-styles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2017/01/04/this-post-demonstrates-post-content-styles/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/archives/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories/junk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories/junk/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories/misc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories/misc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags/ipsum/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/ipsum/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags/lorem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/lorem/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +77,7 @@
       <workItem from="1683025737061" duration="1731000" />
       <workItem from="1683028962840" duration="465000" />
       <workItem from="1683072443441" duration="1585000" />
-      <workItem from="1683199630468" duration="657000" />
+      <workItem from="1683199630468" duration="1427000" />
     </task>
     <task id="LOCAL-00001" summary="feat: title test">
       <created>1683072513013</created>
@@ -103,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683072942831</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: github 링크 url을 수정하다">
+      <created>1683200459003</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683200459003</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +119,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: title test" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: title test" />
+    <MESSAGE value="feat: github 링크 url을 수정하다" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: github 링크 url을 수정하다" />
   </component>
 </project>

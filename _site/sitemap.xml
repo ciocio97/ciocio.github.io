@@ -21,6 +21,10 @@
 <lastmod>2017-01-05T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/blog/2023/05/03/test-content/</loc>
+<lastmod>2023-05-03T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/blog/about/</loc>
 </url>
 <url>
@@ -40,5 +44,11 @@
 </url>
 <url>
 <loc>http://localhost:4000/blog/categories/junk/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/categories/javascript/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/posts/2/</loc>
 </url>
 </urlset>

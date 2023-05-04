@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/blog/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2023-05-03T00:15:21+00:00</updated>
+  <updated>2023-05-04T11:38:07+00:00</updated>
   <id>http://localhost:4000/blog//</id>
 
   
@@ -24,6 +24,48 @@
     </author>
   
 
+  
+  
+    <entry>
+      
+      <title type="html">test title</title>
+      
+      
+      <link href="http://localhost:4000/blog/2023/05/03/test-content/" rel="alternate" type="text/html" title="test title" />
+      
+      <published>2023-05-03T00:00:00+00:00</published>
+      <updated>2023-05-03T00:00:00+00:00</updated>
+      <id>http://localhost:4000/blog/2023/05/03/test-content</id>
+      <content type="html" xml:base="http://localhost:4000/blog/2023/05/03/test-content/">&lt;p&gt;Hello&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>ciocio</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="javascript" />
+      
+
+      
+
+      
+        <summary type="html">Hello</summary>
+      
+
+      
+      
+    </entry>
+  
   
   
     <entry>

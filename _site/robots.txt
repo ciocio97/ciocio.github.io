@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://ciocio.github.io/sitemap.xml

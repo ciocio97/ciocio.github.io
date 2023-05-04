@@ -16,7 +16,7 @@
 title: 🦄 Hello De-signer
 author: ciocio
 description: "Web Developer, ciocio's Blog."
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ciocio.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 lang: ko
 timezone: UTC
@@ -48,6 +48,7 @@ plugins:
 # Build settings
 markdown: kramdown
 excerpt_separator: "<!-- more -->"
+theme: jekyll-whiteglass
 
 # Outputting
 permalink: /:year/:month/:day/:title/

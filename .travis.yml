@@ -24,9 +24,6 @@ script:
     kill -9 "$(cat jekyll.pid)" && \
     rm -f jekyll.pid && \
     rm -rf _tmp_site
-env:
-  global:
-    - GITHUB_TOKEN=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
 branches:
   only:
     - main

@@ -29,7 +29,8 @@ github_username: "ciocio97"
 # Build settings
 theme: jekyll-whiteglass
 plugins:
-  - jekyll-archives
+#  - jekyll-archives
+  - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
 

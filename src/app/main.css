@@ -1,0 +1,88 @@
+.text-block {
+  position: absolute;
+  font-size: 10rem;
+  font-weight: 100;
+  opacity: 0;
+}
+
+.text-block:first-child {
+  animation: moveUp 1s ease forwards 1.7s;
+}
+
+.text-block:nth-child(2) {
+  animation: moveDown 1s ease forwards 1.7s;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-5rem);
+    opacity: 1;
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(5rem);
+    opacity: 1;
+  }
+}
+
+.initial-line {
+  position: absolute;
+  height: 0.2em;
+  background-color: #2b2b2b;
+  animation:
+    shrinkLine 1s ease-in-out forwards,
+    fadeOut 0.5s ease-in-out 1.5s forwards;
+  width: 100vw;
+}
+
+@keyframes shrinkLine {
+  0% {
+    width: 100vw;
+    transform: scaleX(1);
+  }
+  100% {
+    width: 55px;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.typing-cursor {
+  font-weight: 100;
+  color: #a7a7a72f;
+  display: inline-block;
+  height: 1.5em;
+  transform: translateY(-0.1em);
+  margin-right: 4px;
+  animation: blink 1.5s step-end infinite;
+  font-size: 1.1em;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

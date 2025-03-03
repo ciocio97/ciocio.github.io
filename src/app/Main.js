@@ -2,6 +2,89 @@
 
 import "./main.css";
 import { useState, useEffect, useCallback } from "react";
+import styled from "styled-components";
+
+const CubeButton = styled.div`
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+    4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+  border: none;
+  box-shadow: none;
+  width: 200px;
+  height: 200px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+
+  span {
+    color: rgba(28, 28, 28, 1);
+    background: rgb(255, 255, 255, 0.7);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+      inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: 0;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  span:nth-child(1) {
+    opacity: 0.1;
+    box-shadow:
+      -7px -7px 20px 0px #fff9,
+      -4px -4px 5px 0px #fff9,
+      7px 7px 20px 0px #0002,
+      4px 4px 5px 0px #0001;
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+    -webkit-transform-origin: 50% 50% -100px;
+    -moz-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+  }
+  span:nth-child(2) {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: 50% 50% -100px;
+    -moz-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+  }
+  &:hover span:nth-child(1) {
+    opacity: 1;
+    box-shadow:
+      inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  &:hover span:nth-child(2) {
+    opacity: 0.01;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
+`;
 
 const pages = [
   {
@@ -30,9 +113,12 @@ const pages = [
   },
 ];
 
+// 컴포넌트 외부로 이동
+const WORDS = ["Develop", "Design"];
+
 const Main = () => {
   const [text, setText] = useState("Develop");
-  const words = ["Develop", "Design"];
+  // words 제거하고 WORDS 사용
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(false);
@@ -42,7 +128,7 @@ const Main = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const typeText = useCallback(() => {
-    const currentWord = words[wordIndex];
+    const currentWord = WORDS[wordIndex];
 
     // 단어가 완성되었을 때
     if (!isDeleting && text === currentWord && !isPaused) {
@@ -57,7 +143,7 @@ const Main = () => {
     // 삭제가 완료되었을 때
     if (isDeleting && text === "") {
       setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % words.length);
+      setWordIndex((prev) => (prev + 1) % WORDS.length);
       return;
     }
 
@@ -68,7 +154,7 @@ const Main = () => {
         : currentWord.substring(0, text.length + 1);
       setText(nextText);
     }
-  }, [text, isDeleting, wordIndex, isPaused, words]);
+  }, [text, isDeleting, wordIndex, isPaused]);
 
   useEffect(() => {
     // 초기 애니메이션이 끝난 후 커서와 타이핑 효과 시작
@@ -132,11 +218,51 @@ const Main = () => {
         <div
           className={`h-screen flex justify-center items-center text-white text-4xl font-bold`}
         >
-          <div className="absolute flex items-start">
-            <div className="border-2 border-black">프로젝트 1</div>
-            <div className="border-2 border-black">프로젝트 2</div>
-            <div className="border-2 border-black">프로젝트 3</div>
-            <div className="border-2 border-black">프로젝트 4</div>
+          <div className="absolute flex items-start gap-20">
+            <CubeButton>
+              <span>UB</span>
+              <span>
+                <img
+                  src="/images/logo_ub.png"
+                  alt="logo_ub"
+                  width={100}
+                  height={100}
+                />
+              </span>
+            </CubeButton>
+            <CubeButton>
+              <span>FN</span>
+              <span>
+                <img
+                  src="images/logo_fn.png"
+                  alt="logo_fn"
+                  width={95}
+                  height={95}
+                />
+              </span>
+            </CubeButton>
+            <CubeButton>
+              <span>LS</span>
+              <span>
+                <img
+                  src="/images/logo_ls.png"
+                  alt="logo_ls"
+                  width={90}
+                  height={90}
+                />
+              </span>
+            </CubeButton>
+            <CubeButton>
+              <span>RM</span>
+              <span>
+                <img
+                  src="/images/logo_rm.png"
+                  alt="logo_rm"
+                  width={80}
+                  height={80}
+                />
+              </span>
+            </CubeButton>
           </div>
         </div>
         <div

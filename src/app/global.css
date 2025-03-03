@@ -34,10 +34,11 @@ body {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  /* 왜 이거랑 겹쳐서 하양게 나오냐 */
+  /* :root {
     color: #2b2b2b;
     background-color: #ffffff;
-  }
+  } */
   a:hover {
     color: #747bff;
   }

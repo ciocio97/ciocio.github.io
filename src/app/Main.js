@@ -1,10 +1,21 @@
 "use client";
 
 import "./main.css";
-import { useState, useEffect, useCallback } from "react";
-import styled from "styled-components";
+import { useState, useEffect, useCallback, useRef } from "react";
+import styled, { css } from "styled-components";
+
+const NoiseCanvas = styled.canvas`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.15;
+`;
 
 const CubeButton = styled.div`
+  position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
@@ -18,15 +29,14 @@ const CubeButton = styled.div`
   height: 200px;
   -webkit-perspective: 230px;
   perspective: 230px;
-
+  z-index: 1;
   span {
+    position: absolute;
     color: rgba(28, 28, 28, 1);
-    background: rgb(255, 255, 255, 0.7);
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 1) 100%
-    );
+    /* color: rgba(255, 255, 255, 1); */
+    font-size: 2rem;
+    font-weight: 300;
+    background: rgb(255, 255, 255, 0.6);
     position: absolute;
     width: 200px;
     height: 200px;
@@ -37,7 +47,8 @@ const CubeButton = styled.div`
       inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
       7px 7px 20px 0px rgba(0, 0, 0, 0.1),
       4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(87, 87, 87, 0.5);
     margin: 0;
     text-align: center;
     -webkit-box-sizing: border-box;
@@ -45,31 +56,69 @@ const CubeButton = styled.div`
     box-sizing: border-box;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
+
+    &:nth-child(1) {
+      opacity: 0.01;
+      box-shadow:
+        -7px -7px 20px 0px #fff9,
+        -4px -4px 5px 0px #fff9,
+        7px 7px 20px 0px #0002,
+        4px 4px 5px 0px #0001;
+      -webkit-transform: rotateX(90deg);
+      -moz-transform: rotateX(90deg);
+      transform: rotateX(90deg);
+      -webkit-transform-origin: 50% 50% -100px;
+      -moz-transform-origin: 50% 50% -100px;
+      transform-origin: 50% 50% -100px;
+    }
+
+    &:nth-child(2) {
+      -webkit-transform: rotateX(0deg);
+      -moz-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+      -webkit-transform-origin: 50% 50% -100px;
+      -moz-transform-origin: 50% 50% -100px;
+      transform-origin: 50% 50% -100px;
+    }
+
+    /* &.project {
+      ${(props) =>
+      props.$selectedProjectId === 1 &&
+      css`
+        left: -200px;
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        transition: all 1s ease-in-out 0s;
+      `};
+
+      ${(props) =>
+      props.$selectedProjectId === 2 &&
+      css`
+        left: -480px;
+        transition: all 1s ease-in-out 0s;
+      `};
+
+      ${(props) =>
+      props.$selectedProjectId === 3 &&
+      css`
+        left: -760px;
+        transition: all 1s ease-in-out 0s;
+      `};
+
+      ${(props) =>
+      props.$selectedProjectId === 4 &&
+      css`
+        left: -1040px;
+        transition: all 1s ease-in-out 0s;
+      `};
+    } */
   }
-  span:nth-child(1) {
-    opacity: 0.1;
-    box-shadow:
-      -7px -7px 20px 0px #fff9,
-      -4px -4px 5px 0px #fff9,
-      7px 7px 20px 0px #0002,
-      4px 4px 5px 0px #0001;
-    -webkit-transform: rotateX(90deg);
-    -moz-transform: rotateX(90deg);
-    transform: rotateX(90deg);
-    -webkit-transform-origin: 50% 50% -100px;
-    -moz-transform-origin: 50% 50% -100px;
-    transform-origin: 50% 50% -100px;
-  }
-  span:nth-child(2) {
-    -webkit-transform: rotateX(0deg);
-    -moz-transform: rotateX(0deg);
-    transform: rotateX(0deg);
-    -webkit-transform-origin: 50% 50% -100px;
-    -moz-transform-origin: 50% 50% -100px;
-    transform-origin: 50% 50% -100px;
-  }
+
   &:hover span:nth-child(1) {
     opacity: 1;
+    background: rgba(255, 255, 255, 0.7);
     box-shadow:
       inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
       7px 7px 20px 0px rgba(0, 0, 0, 0.1),
@@ -90,35 +139,107 @@ const pages = [
   {
     id: 1,
     title: "First Page",
-    bg: "bg-gradient-to-r from-blue-400 to-indigo-500",
     component: <div>First Page</div>,
   },
   {
     id: 2,
     title: "Second Page",
-    bg: "bg-gradient-to-r from-orange-400 to-pink-500",
     component: <div>Second Page</div>,
   },
   {
     id: 3,
     title: "Third Page",
-    bg: "bg-gradient-to-r from-green-400 to-teal-500",
     component: <div>Third Page</div>,
-  },
-  {
-    id: 4,
-    title: "Fourth Page",
-    bg: "bg-gradient-to-r from-purple-600 to-pink-700",
-    component: <div>Fourth Page</div>,
   },
 ];
 
 // 컴포넌트 외부로 이동
 const WORDS = ["Develop", "Design"];
 
+const NoiseEffect = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    let canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let ctx = canvas.getContext("2d");
+    let wWidth = window.innerWidth;
+    let wHeight = window.innerHeight;
+    let noiseData = [];
+    let frame = 0;
+    let loopTimeout;
+
+    const createNoise = () => {
+      const idata = ctx.createImageData(wWidth, wHeight);
+      const buffer32 = new Uint32Array(idata.data.buffer);
+      const len = buffer32.length;
+
+      for (let i = 0; i < len; i++) {
+        const grayscale = Math.random() < 0.5 ? 0xff7f7f7f : 0xffffffff;
+        buffer32[i] = grayscale;
+      }
+
+      noiseData.push(idata);
+    };
+
+    const paintNoise = () => {
+      if (frame === 9) {
+        frame = 0;
+      } else {
+        frame++;
+      }
+      ctx.putImageData(noiseData[frame], 0, 0);
+    };
+
+    const loop = () => {
+      paintNoise(frame);
+      loopTimeout = window.setTimeout(() => {
+        window.requestAnimationFrame(loop);
+      }, 1000 / 25);
+    };
+
+    const setup = () => {
+      wWidth = window.innerWidth;
+      wHeight = window.innerHeight;
+      canvas.width = wWidth;
+      canvas.height = wHeight;
+
+      for (let i = 0; i < 10; i++) {
+        createNoise();
+      }
+
+      loop();
+    };
+
+    let resizeThrottle;
+    const reset = () => {
+      window.addEventListener(
+        "resize",
+        () => {
+          window.clearTimeout(resizeThrottle);
+          resizeThrottle = window.setTimeout(() => {
+            window.clearTimeout(loopTimeout);
+            setup();
+          }, 200);
+        },
+        false,
+      );
+    };
+
+    setup();
+    reset();
+
+    return () => {
+      window.clearTimeout(loopTimeout);
+    };
+  }, []);
+
+  return <NoiseCanvas ref={canvasRef} />;
+};
+
 const Main = () => {
   const [text, setText] = useState("Develop");
-  // words 제거하고 WORDS 사용
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(false);
@@ -126,6 +247,13 @@ const Main = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+  // const [projects, setProjects] = useState([
+  //   { id: 1, isSelected: false },
+  //   { id: 2, isSelected: false },
+  //   { id: 3, isSelected: false },
+  //   { id: 4, isSelected: false },
+  // ]);
 
   const typeText = useCallback(() => {
     const currentWord = WORDS[wordIndex];
@@ -195,7 +323,7 @@ const Main = () => {
   return (
     <div className="h-screen w-screen overflow-hidden relative">
       <div
-        className="absolute inset-0 w-full h-full transition-transform duration-700"
+        className="absolute inset-0 w-full h-full transition-transform duration-700 z-1"
         style={{ transform: `translateY(-${(currentPage - 1) * 100}vh)` }}
       >
         <div className="relative h-screen flex justify-center items-center">
@@ -215,13 +343,14 @@ const Main = () => {
           </div>
           <div className="initial-line"></div>
         </div>
-        <div
-          className={`h-screen flex justify-center items-center text-white text-4xl font-bold`}
-        >
+        <div className={`relative h-screen flex justify-center items-center`}>
           <div className="absolute flex items-start gap-20">
-            <CubeButton>
-              <span>UB</span>
-              <span>
+            <CubeButton
+              $selectedProjectId={selectedProjectId}
+              onClick={() => setSelectedProjectId(1)}
+            >
+              <span>Urbanbase</span>
+              <span className={selectedProjectId === 1 ? "project" : ""}>
                 <img
                   src="/images/logo_ub.png"
                   alt="logo_ub"
@@ -230,9 +359,12 @@ const Main = () => {
                 />
               </span>
             </CubeButton>
-            <CubeButton>
-              <span>FN</span>
-              <span>
+            <CubeButton
+              $selectedProjectId={selectedProjectId}
+              onClick={() => setSelectedProjectId(2)}
+            >
+              <span>Future Nuri</span>
+              <span className={selectedProjectId === 2 ? "project" : ""}>
                 <img
                   src="images/logo_fn.png"
                   alt="logo_fn"
@@ -241,9 +373,12 @@ const Main = () => {
                 />
               </span>
             </CubeButton>
-            <CubeButton>
-              <span>LS</span>
-              <span>
+            <CubeButton
+              $selectedProjectId={selectedProjectId}
+              onClick={() => setSelectedProjectId(3)}
+            >
+              <span>Life Secretary</span>
+              <span className={selectedProjectId === 3 ? "project" : ""}>
                 <img
                   src="/images/logo_ls.png"
                   alt="logo_ls"
@@ -252,9 +387,12 @@ const Main = () => {
                 />
               </span>
             </CubeButton>
-            <CubeButton>
-              <span>RM</span>
-              <span>
+            <CubeButton
+              $selectedProjectId={selectedProjectId}
+              onClick={() => setSelectedProjectId(4)}
+            >
+              <span>Ref Mate</span>
+              <span className={selectedProjectId === 4 ? "project" : ""}>
                 <img
                   src="/images/logo_rm.png"
                   alt="logo_rm"
@@ -263,6 +401,73 @@ const Main = () => {
                 />
               </span>
             </CubeButton>
+          </div>
+          {/* z-2 */}
+          <div className="absolute top-0 left-0 w-screen h-screen">
+            {/* 1 */}
+            <div
+              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 1 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              <img
+                src="/images/logo_ub.png"
+                alt="logo_ub"
+                width={100}
+                height={100}
+              />
+            </div>
+            <div
+              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-red-500 transition-transform duration-500 ${selectedProjectId === 1 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              hello
+            </div>
+            {/* 2 */}
+            <div
+              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 2 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              <img
+                src="/images/logo_fn.png"
+                alt="logo_fn"
+                width={95}
+                height={95}
+              />
+            </div>
+            <div
+              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-green-500 transition-transform duration-500 ${selectedProjectId === 2 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              hello
+            </div>
+            {/* 3 */}
+            <div
+              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 3 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              <img
+                src="/images/logo_ls.png"
+                alt="logo_ls"
+                width={90}
+                height={90}
+              />
+            </div>
+            <div
+              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-blue-500 transition-transform duration-500 ${selectedProjectId === 3 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              hello
+            </div>
+            {/* 4 */}
+            <div
+              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 4 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              <img
+                src="/images/logo_rm.png"
+                alt="logo_rm"
+                width={80}
+                height={80}
+              />
+            </div>
+            <div
+              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-black transition-transform duration-500 ${selectedProjectId === 4 ? "" : "translate-x-[calc(100vw-200px)]"}`}
+            >
+              hello
+            </div>
           </div>
         </div>
         <div
@@ -277,11 +482,12 @@ const Main = () => {
         {pages.map((page) => (
           <button
             key={page.id}
-            className={`w-4 h-4 rounded-full border ${currentPage === page.id ? "bg-white border-white scale-125" : "border-gray-400"}`}
+            className={`w-3 h-3 rounded-full border ${currentPage === page.id ? "bg-white border-white scale-125" : "bg-white/70 border-gray"}`}
             onClick={() => setCurrentPage(page.id)}
           />
         ))}
       </div>
+      <NoiseEffect />
     </div>
   );
 };

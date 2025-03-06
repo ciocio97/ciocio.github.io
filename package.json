@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && gh-pages -d build"
+    "deploy": "next build && touch build/.nojekyll && gh-pages -d build --dotfiles"
   },
   "dependencies": {
     "@react-three/drei": "^10.0.2",

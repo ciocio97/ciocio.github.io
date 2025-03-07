@@ -3,7 +3,7 @@
 import "./main.css";
 import { useState, useEffect, useCallback, useRef } from "react";
 import styled, { css } from "styled-components";
-
+import ProjectNavigation from "./components/projectNavigation";
 const NoiseCanvas = styled.canvas`
   position: absolute;
   top: 0;
@@ -135,6 +135,12 @@ const CubeButton = styled.div`
   }
 `;
 
+const ProjectIcon = styled.div`
+  position: fixed;
+  top: ${props => props.$top === 0 ? 1500 : props.$top}px;
+  left: 80px;
+`;
+
 const pages = [
   {
     id: 1,
@@ -239,6 +245,9 @@ const NoiseEffect = () => {
 };
 
 const Main = () => {
+  const containerRef = useRef(null);
+  const [containerHeight, setContainerHeight] = useState(0);
+
   const [text, setText] = useState("Develop");
   const [isDeleting, setIsDeleting] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
@@ -308,6 +317,7 @@ const Main = () => {
     const handleWheel = (e) => {
       if (isScrolling) return;
       setIsScrolling(true);
+
       if (e.deltaY > 0 && currentPage < pages.length) {
         setCurrentPage((prev) => prev + 1);
       } else if (e.deltaY < 0 && currentPage > 1) {
@@ -320,8 +330,14 @@ const Main = () => {
     return () => window.removeEventListener("wheel", handleWheel);
   }, [currentPage, isScrolling]);
 
+  useEffect(() => {
+    if (containerRef.current) {
+      setContainerHeight(containerRef.current.scrollHeight);
+    }
+  }, [containerRef]);
+
   return (
-    <div className="h-screen w-screen overflow-hidden relative">
+    <div className="h-screen w-screen overflow-hidden relative" ref={containerRef}>
       <div
         className="absolute inset-0 w-full h-full transition-transform duration-700 z-1"
         style={{ transform: `translateY(-${(currentPage - 1) * 100}vh)` }}
@@ -363,22 +379,8 @@ const Main = () => {
               $selectedProjectId={selectedProjectId}
               onClick={() => setSelectedProjectId(2)}
             >
-              <span>Future Nuri</span>
-              <span className={selectedProjectId === 2 ? "project" : ""}>
-                <img
-                  src="images/logo_fn.png"
-                  alt="logo_fn"
-                  width={95}
-                  height={95}
-                />
-              </span>
-            </CubeButton>
-            <CubeButton
-              $selectedProjectId={selectedProjectId}
-              onClick={() => setSelectedProjectId(3)}
-            >
               <span>Life Secretary</span>
-              <span className={selectedProjectId === 3 ? "project" : ""}>
+              <span className={selectedProjectId === 2 ? "project" : ""}>
                 <img
                   src="/images/logo_ls.png"
                   alt="logo_ls"
@@ -389,10 +391,10 @@ const Main = () => {
             </CubeButton>
             <CubeButton
               $selectedProjectId={selectedProjectId}
-              onClick={() => setSelectedProjectId(4)}
+              onClick={() => setSelectedProjectId(3)}
             >
               <span>Ref Mate</span>
-              <span className={selectedProjectId === 4 ? "project" : ""}>
+              <span className={selectedProjectId === 3 ? "project" : ""}>
                 <img
                   src="/images/logo_rm.png"
                   alt="logo_rm"
@@ -402,71 +404,64 @@ const Main = () => {
               </span>
             </CubeButton>
           </div>
-          {/* z-2 */}
-          <div className="absolute top-0 left-0 w-screen h-screen">
-            {/* 1 */}
-            <div
-              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 1 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              <img
-                src="/images/logo_ub.png"
-                alt="logo_ub"
-                width={100}
-                height={100}
-              />
+          {/* 1 */}
+          <div
+            className={`absolute top-0 transition-transform duration-500 ${selectedProjectId === 1 ? (currentPage === 2 ? "" : "translate-x-[100vw]") : "translate-x-[100vw]"} z-1`}
+          >
+            <div className="relative h-screen w-screen">
+              <ProjectIcon $top={Math.round((containerHeight / 3) * 1.1)}>
+                <img
+                  src="/images/logo_ub.png"
+                  alt="logo_ub"
+                  width={100}
+                  height={100}
+                />
+              </ProjectIcon>
+              <div
+                className={`absolute h-screen w-[calc(100vw-250px)] top-0 right-0 border border-l-white/70 bg-white/95 z-2`}
+              >
+                hello
+              </div>
             </div>
-            <div
-              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-red-500 transition-transform duration-500 ${selectedProjectId === 1 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              hello
+          </div>
+          {/* 2 */}
+          <div
+            className={`absolute h-screen w-screen top-0 transition-transform duration-500 ${selectedProjectId === 2 ? (currentPage === 2 ? "" : "translate-x-[100vw]") : "translate-x-[100vw]"} z-1`}
+          >
+            <div className="relative h-screen w-screen">
+              <ProjectIcon $top={Math.round((containerHeight / 3) * 1.1)}>
+                <img
+                  src="/images/logo_ls.png"
+                  alt="logo_ls"
+                  width={90}
+                  height={90}
+                />
+              </ProjectIcon>
+              <div
+                className={`absolute h-screen w-[calc(100vw-250px)] top-0 right-0 border border-l-white/70 bg-white/95 z-2`}
+              >
+                hello
+              </div>
             </div>
-            {/* 2 */}
-            <div
-              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 2 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              <img
-                src="/images/logo_fn.png"
-                alt="logo_fn"
-                width={95}
-                height={95}
-              />
-            </div>
-            <div
-              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-green-500 transition-transform duration-500 ${selectedProjectId === 2 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              hello
-            </div>
-            {/* 3 */}
-            <div
-              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 3 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              <img
-                src="/images/logo_ls.png"
-                alt="logo_ls"
-                width={90}
-                height={90}
-              />
-            </div>
-            <div
-              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-blue-500 transition-transform duration-500 ${selectedProjectId === 3 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              hello
-            </div>
-            {/* 4 */}
-            <div
-              className={`absolute top-1/2 left-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ${selectedProjectId === 4 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              <img
-                src="/images/logo_rm.png"
-                alt="logo_rm"
-                width={80}
-                height={80}
-              />
-            </div>
-            <div
-              className={`absolute h-screen w-[calc(100vw-200px)] top-0 left-[200px] border-2 border-white bg-black transition-transform duration-500 ${selectedProjectId === 4 ? "" : "translate-x-[calc(100vw-200px)]"}`}
-            >
-              hello
+          </div>
+          {/* 3 */}
+          <div
+            className={`absolute h-screen w-screen top-0 transition-transform duration-500 ${selectedProjectId === 3 ? (currentPage === 2 ? "" : "translate-x-[100vw]") : "translate-x-[100vw]"} z-1`}
+          >
+            <div className="relative h-screen w-screen">
+              <ProjectIcon $top={Math.round((containerHeight / 3) * 1.1)}>
+                <img
+                    src="/images/logo_rm.png"
+                    alt="logo_rm"
+                    width={80}
+                    height={80}
+                  />
+              </ProjectIcon>
+              <div
+                className={`absolute h-screen w-[calc(100vw-250px)] top-0 right-0 border-2 border border-l-white/70 bg-white/95 z-2`}
+              >
+                hello
+              </div>
             </div>
           </div>
         </div>
@@ -477,12 +472,20 @@ const Main = () => {
           className={`h-screen flex justify-center items-center text-white text-4xl font-bold`}
         ></div>
       </div>
+      <div
+        className={`absolute left-14 top-8 flex gap-4 z-1 transition-transform duration-500 ${selectedProjectId && currentPage === 2 ? "translate-x-[5px]" : "-translate-x-[250px]"}`}
+      >
+        <ProjectNavigation
+          selectedProjectId={selectedProjectId}
+          setSelectedProjectId={setSelectedProjectId}
+        />
+      </div>
 
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+      <div className="absolute right-5 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-1">
         {pages.map((page) => (
           <button
             key={page.id}
-            className={`w-3 h-3 rounded-full border ${currentPage === page.id ? "bg-white border-white scale-125" : "bg-white/70 border-gray"}`}
+            className={`w-3 h-3 rounded-full border ${currentPage === page.id ? "bg-white border-white scale-125" : "bg-white/70 border-gray"} cursor-pointer`}
             onClick={() => setCurrentPage(page.id)}
           />
         ))}
